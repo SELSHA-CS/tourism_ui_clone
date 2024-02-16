@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tourism_ui_clone/screen/dummydata.dart';
+import 'package:tourism_ui_clone/widgets/exbtn.dart';
 
 class PlaceDetails extends StatelessWidget {
   const PlaceDetails({super.key});
@@ -14,19 +16,52 @@ class PlaceDetails extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
+          SliverAppBar(
+            title: Text(place['place_name'], style: TextStyle(
+              fontSize: 15, fontWeight: FontWeight.bold
+            ),),
+          ),
           SliverPadding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(10),
             sliver: SliverToBoxAdapter(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Flexible(
-                    child: Text(place["place_name"], style: GoogleFonts.poppins(fontSize: 20),)
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(place['place_name'], style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 15
+                        ),),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: RatingBar.builder(
+                                initialRating: 5,
+                                direction: Axis.horizontal,
+                                itemPadding: EdgeInsets.all(.5),
+                                itemCount: 5,
+                                itemBuilder: (context, index) => SizedBox(
+                                  height: 40,
+                                  width: 40,
+                                  child: Icon(Icons.star, color: Colors.amber,)),
+                                onRatingUpdate: (rating){
+                                  print(rating);
+                                },
+                              ),
+                            ),
+                            Text("4.7 Rating")
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                   Container( 
                     height: 50,
-                    child: VerticalDivider(thickness: 3, color: Colors.grey,)),
-                  SizedBox(width: 10,),
+                    child: VerticalDivider(thickness: 2, color: Colors.grey,)
+                  ),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.asset(place["img3"], fit: BoxFit.cover, height: 70, width: 70,),
@@ -82,7 +117,7 @@ class PlaceDetails extends StatelessWidget {
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(5),
             sliver: SliverToBoxAdapter(
               child: Container(
                 height: 220,
@@ -98,43 +133,43 @@ class PlaceDetails extends StatelessWidget {
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(5),
             sliver: SliverToBoxAdapter(
               child: Text("Special Facilities", style: GoogleFonts.poppins(fontSize: 25, fontWeight: FontWeight.bold),),
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(5),
             sliver: SliverToBoxAdapter(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(4, (index) => Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8),
-                  decoration: BoxDecoration(
+                children: List.generate(4, (index) => SizedBox(
+                  height: 50,
+                  width: 70,
+                  child: Card(
                     color: Colors.blueGrey[200],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Adult"),
+                          Text("02"),
+                        ],
+                      ),
+                    ),
                   ),
-                  child: Column(
-                    children: [
-                      Text("Adult"),
-                      Text("02"),
-                    ],
-                  ),
-              ))
+                )
+              )
               )
             )
           ),
           SliverPadding(
-            padding: const EdgeInsets.all(20),
+            padding: EdgeInsets.all(10),
             sliver: SliverToBoxAdapter(
-              child: MaterialButton(
-                height: 40,
-                onPressed: (){},
-                color: const Color.fromARGB(255, 10, 59, 99),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text("Explore Now", style: GoogleFonts.poppins(color: Colors.white),),
-              ),
+              child: ExButton()
             ),
           ),
         ],

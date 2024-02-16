@@ -14,52 +14,54 @@ class MainScreen extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.center,
-            child: Container(
+            child: SizedBox(
               height: 150,
               width: 150,
               child: Image.asset("assets/images/s1.png")
             ),
           ),
-          SizedBox(height: 100,),
+          const SizedBox(height: 100,),
           ElevatedButton(
             onPressed: (){
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
             }, 
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue,
-              minimumSize: Size(150, 50),
+              backgroundColor: const Color.fromARGB(255, 31, 140, 230),
+              minimumSize: const Size(150, 50),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               )
             ),
-            child: Text(
-              "Login",
+            child: const Text(
+              "Log in",
               style: TextStyle(
-                color: Colors.white
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 14
               ),
             ),
           ),
-          SizedBox(height: 20,),
-          Text("- OR -"),
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
+          const Text("- OR -"),
+          const SizedBox(height: 20,),
           MainButton(
-            bgcolor: Colors.blue, 
+            bgcolor: const Color.fromARGB(255, 47, 105, 204), 
             ontap: (){}, 
             label: "Login with FaceBook", 
             icon: FontAwesomeIcons.facebook, 
             width: 90,
           ),
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
           MainButton(
-            bgcolor: Colors.lightBlue, 
+            bgcolor: const Color.fromARGB(255, 57, 178, 235), 
             ontap: (){}, 
             label: "Login with Twitter", 
             icon: FontAwesomeIcons.twitter, 
             width: 110,
           ),
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
           MainButton(
-            bgcolor: Colors.red, 
+            bgcolor: Color.fromARGB(255, 182, 35, 24), 
             ontap: (){}, 
             label: "Login with Google", 
             icon: FontAwesomeIcons.google, 

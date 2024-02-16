@@ -7,6 +7,7 @@ List<Map<String, dynamic>> places = [
     "img1": "assets/images/1.jpg",
     "img2": "assets/images/11.jpg",
     "img3": "assets/images/21.jpg",
+    "img" : "assets/images/p1.jpg",
   },
   {
     "id": 7051,
@@ -16,6 +17,7 @@ List<Map<String, dynamic>> places = [
     "img1": "assets/images/2.jpg",
     "img2": "assets/images/12.jpg",
     "img3": "assets/images/22.jpg",
+    "img" : "assets/images/p2.jpg"
   },
   {
     "id": 7052,
@@ -25,6 +27,7 @@ List<Map<String, dynamic>> places = [
     "img1": "assets/images/3.jpg",
     "img2": "assets/images/13.jpg",
     "img3": "assets/images/23.jpg",
+    "img" : "assets/images/p3.webp"
   },
   {
     "id": 7053,
@@ -34,5 +37,6 @@ List<Map<String, dynamic>> places = [
     "img1": "assets/images/4.jpg",
     "img2": "assets/images/14.jpg",
     "img3": "assets/images/24.jpg",
+    "img" : "assets/images/p4.jpg"
   },
 ];

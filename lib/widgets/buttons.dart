@@ -26,6 +26,8 @@ class MainButton extends StatelessWidget {
           children: [
             Text(label, style: TextStyle(
               color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 14
             ),),
             SizedBox(width: width,),
             FaIcon(icon, color: Colors.white,)
