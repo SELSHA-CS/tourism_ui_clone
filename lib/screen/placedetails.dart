@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tourism_ui_clone/screen/dummydata.dart';
+import 'package:tourism_ui_clone/widgets/cardbox.dart';
 import 'package:tourism_ui_clone/widgets/exbtn.dart';
+import 'package:tourism_ui_clone/widgets/placedet.dart';
+import 'package:tourism_ui_clone/widgets/specrows.dart';
 
 class PlaceDetails extends StatelessWidget {
   const PlaceDetails({super.key});
@@ -17,57 +20,14 @@ class PlaceDetails extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            title: Text(place['place_name'], style: TextStyle(
+            title: Text(place['place_name'], style: const TextStyle(
               fontSize: 15, fontWeight: FontWeight.bold
             ),),
           ),
           SliverPadding(
             padding: const EdgeInsets.all(10),
             sliver: SliverToBoxAdapter(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(place['place_name'], style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 15
-                        ),),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: RatingBar.builder(
-                                initialRating: 5,
-                                direction: Axis.horizontal,
-                                itemPadding: EdgeInsets.all(.5),
-                                itemCount: 5,
-                                itemBuilder: (context, index) => SizedBox(
-                                  height: 40,
-                                  width: 40,
-                                  child: Icon(Icons.star, color: Colors.amber,)),
-                                onRatingUpdate: (rating){
-                                  print(rating);
-                                },
-                              ),
-                            ),
-                            Text("4.7 Rating")
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container( 
-                    height: 50,
-                    child: VerticalDivider(thickness: 2, color: Colors.grey,)
-                  ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(place["img3"], fit: BoxFit.cover, height: 70, width: 70,),
-                  )
-                ],
-              ),
+              child: PlaceDet(place: place),
             ),
           ),
           SliverPadding(
@@ -88,32 +48,14 @@ class PlaceDetails extends StatelessWidget {
               child: Text("Special Facilities", style: GoogleFonts.poppins(fontSize: 25, fontWeight: FontWeight.bold),),
             ),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.all(10),
+          const SliverPadding(
+            padding: EdgeInsets.all(10),
             sliver: SliverToBoxAdapter(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(Icons.car_rental, color: Colors.blue,),
-                      Text("Parking", style: GoogleFonts.poppins(color: Colors.blue),),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.support, color: Colors.blue,),
-                      Text("24×7 support", style: GoogleFonts.poppins(color: Colors.blue),),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.wifi, color: Colors.blue,),
-                      Text("Free wifi", style: GoogleFonts.poppins(color: Colors.blue),),
-                    ],
-                  ),
-                ],
-              )
+              child: SpecRows(
+                text1: 'Parking', icon1: Icons.car_rental, 
+                text2: '24×7 support', icon2: Icons.support, 
+                text3: 'Free wifi', icon3: Icons.wifi,
+              ),
             ),
           ),
           SliverPadding(
@@ -127,8 +69,7 @@ class PlaceDetails extends StatelessWidget {
                   image: DecorationImage(
                     image: AssetImage(place["img2"]),
                     fit: BoxFit.cover,
-                  ),
-                ),
+                )),
               )
             ),
           ),
@@ -138,42 +79,17 @@ class PlaceDetails extends StatelessWidget {
               child: Text("Special Facilities", style: GoogleFonts.poppins(fontSize: 25, fontWeight: FontWeight.bold),),
             ),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.all(5),
+          const SliverPadding(
+            padding: EdgeInsets.all(5),
             sliver: SliverToBoxAdapter(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(4, (index) => SizedBox(
-                  height: 50,
-                  width: 70,
-                  child: Card(
-                    color: Colors.blueGrey[200],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Adult"),
-                          Text("02"),
-                        ],
-                      ),
-                    ),
-                  ),
-                )
-              )
-              )
-            )
-          ),
-          SliverPadding(
+              child: CardBox()
+          )),
+          const SliverPadding(
             padding: EdgeInsets.all(10),
             sliver: SliverToBoxAdapter(
               child: ExButton()
-            ),
-          ),
-        ],
-      ),
+          )),
+        ]),
     );
   }
 }

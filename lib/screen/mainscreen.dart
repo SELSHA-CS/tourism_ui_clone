@@ -23,7 +23,7 @@ class MainScreen extends StatelessWidget {
           const SizedBox(height: 100,),
           ElevatedButton(
             onPressed: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
             }, 
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 31, 140, 230),
@@ -61,7 +61,7 @@ class MainScreen extends StatelessWidget {
           ),
           const SizedBox(height: 20,),
           MainButton(
-            bgcolor: Color.fromARGB(255, 182, 35, 24), 
+            bgcolor: const Color.fromARGB(255, 182, 35, 24), 
             ontap: (){}, 
             label: "Login with Google", 
             icon: FontAwesomeIcons.google, 

@@ -7,7 +7,8 @@ import 'package:tourism_ui_clone/widgets/mytext.dart';
 import 'package:tourism_ui_clone/widgets/searchbox.dart';
 
 class HomeScreen extends StatelessWidget{
-  
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,8 +16,8 @@ class HomeScreen extends StatelessWidget{
         slivers: [
           SliverAppBar(
             leading: const Icon(Icons.menu),
-            title: Center(child: EasyRichText(
-              "GoFast",
+            title: Center(
+              child: EasyRichText("GoFast",
               defaultStyle: const TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 25,
               ),
@@ -26,8 +27,7 @@ class HomeScreen extends StatelessWidget{
                   stringAfterTarget: 'Fast',
                   matchWordBoundaries: false,
                   style: const TextStyle(color: Colors.blue)
-                ),
-              ],
+              )],
             )),
             actions: const [
               Padding(
@@ -35,9 +35,7 @@ class HomeScreen extends StatelessWidget{
                 child: CircleAvatar(
                   radius: 20,
                   backgroundColor: Colors.blue,
-                ),
-              ),
-            ],
+            ))],
             bottom: AppBar(
               title: const SearchBox(),
             ),
@@ -48,11 +46,10 @@ class HomeScreen extends StatelessWidget{
               child: MyText(
                 text1: 'Popular Places', 
                 text2: 'View All',
-              ),
-            ),
+            )),
           ),
           SliverPadding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             sliver: SliverGrid.count(
               crossAxisCount: 2,
               childAspectRatio: .8,
@@ -69,17 +66,14 @@ class HomeScreen extends StatelessWidget{
                           image: DecorationImage(
                             image: AssetImage(e["img"]),
                             fit: BoxFit.cover,
-                          ),
-                        ),
+                        )),
                       ),
                       Positioned(
-                        left: 5,
-                        top: 5,
+                        left: 5, top: 5,
                         child: SizedBox(
-                          height: 35,
-                          width: 60,
+                          height: 35, width: 60,
                           child: Card(
-                            color: Color.fromARGB(255, 45, 103, 204),
+                            color: const Color.fromARGB(255, 45, 103, 204),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5),
                             ),
@@ -90,32 +84,27 @@ class HomeScreen extends StatelessWidget{
                                 fontWeight: FontWeight.bold
                               )),
                             ),
-                          ),
-                        )
+                        ))
                       ),
                       Positioned(
-                        left: 5,
-                        bottom: 2,
+                        left: 5, bottom: 2,
                         child: Text(e["name"], style: GoogleFonts.poppins(
-                          color: Color.fromARGB(255, 255, 255, 255), 
+                          color: const Color.fromARGB(255, 255, 255, 255), 
                           fontWeight: FontWeight.bold, 
                           fontSize: 18,
-                        ),)
-                      ),
+                      ))),
                     ],
                   ),
                 ),
               )).toList(),
             ),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.all(30),
+          const SliverPadding(
+            padding: EdgeInsets.all(30),
             sliver: SliverToBoxAdapter(
               child: ExButton(),
-            ),
-          ),
-        ],
-      ),
+          ))
+        ]),
     );
   }
 }
